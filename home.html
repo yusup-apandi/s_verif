@@ -1,0 +1,189 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>DataTable with Bootstrap Modal</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <!-- Font Google -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900&display=swap"
+        rel="stylesheet">
+    <!-- DataTable CSS -->
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/buttons/2.4.1/css/buttons.dataTables.min.css">
+
+</head>
+
+<body>
+    <!-- Loading Spinner -->
+    <div class="loading-container" id="loadingContainer">
+        <div id="loadingAnimation"></div>
+    </div>
+
+    <!-- Header -->
+    <div class="header">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-md-2">
+                    <img src="/assets/img/logo_sumedang.png" alt="Logo Sumedang">
+                </div>
+                <div class="col-md-8 text-center">
+                    <h4 class="fw-semibold c-primary">Sistem Verifikasi Pembayaran Pajak Daerah</h4>
+                    <p class="lead fw-medium c-primary">Bapenda Kabupaten Sumedang</p>
+                </div>
+                <div class="col-md-2 text-end">
+                    <img src="/assets/img/logo_bapenda.png" alt="Logo Bapenda Sumedang">
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Content -->
+
+    <div class="d-flex flex-column gap-5  vh-100 align-items-center justify-content-center ">
+        <div class="c-card w-50">
+            <div class="d-flex align-items-center gap-1 pb-4">
+                <svg width="28" height="28" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path opacity="0.5"
+                        d="M12.7893 4.26666C12.5793 4.45607 12.359 4.63368 12.1293 4.79866C11.732 5.06532 11.2853 5.24932 10.816 5.34266C10.612 5.38266 10.3987 5.39999 9.97333 5.43332C8.90533 5.51866 8.37066 5.56132 7.92533 5.71866C7.41612 5.89844 6.95363 6.18995 6.57179 6.57179C6.18995 6.95363 5.89844 7.41612 5.71866 7.92532C5.56133 8.37066 5.51866 8.90532 5.43333 9.97332C5.41878 10.2557 5.38851 10.537 5.34266 10.816C5.24933 11.2853 5.06533 11.732 4.79866 12.1293C4.68266 12.3027 4.54399 12.4653 4.26666 12.7893C3.57199 13.6053 3.22399 14.0133 3.01999 14.44C2.54933 15.4267 2.54933 16.5733 3.01999 17.56C3.22399 17.9867 3.57199 18.3947 4.26666 19.2107C4.54399 19.5347 4.68266 19.6973 4.79866 19.8707C5.06533 20.268 5.24933 20.7147 5.34266 21.184C5.38266 21.388 5.39999 21.6013 5.43333 22.0267C5.51866 23.0947 5.56133 23.6293 5.71866 24.0747C5.89844 24.5839 6.18995 25.0463 6.57179 25.4282C6.95363 25.81 7.41612 26.1015 7.92533 26.2813C8.37066 26.4387 8.90533 26.4813 9.97333 26.5667C10.3987 26.6 10.612 26.6173 10.816 26.6573C11.2853 26.7507 11.732 26.936 12.1293 27.2013C12.3027 27.3173 12.4653 27.456 12.7893 27.7333C13.6053 28.428 14.0133 28.776 14.44 28.98C15.4267 29.4507 16.5733 29.4507 17.56 28.98C17.9867 28.776 18.3947 28.428 19.2107 27.7333C19.5347 27.456 19.6973 27.3173 19.8707 27.2013C20.268 26.9347 20.7147 26.7507 21.184 26.6573C21.388 26.6173 21.6013 26.6 22.0267 26.5667C23.0947 26.4813 23.6293 26.4387 24.0747 26.2813C24.5839 26.1015 25.0464 25.81 25.4282 25.4282C25.81 25.0463 26.1015 24.5839 26.2813 24.0747C26.4387 23.6293 26.4813 23.0947 26.5667 22.0267C26.6 21.6013 26.6173 21.388 26.6573 21.184C26.7507 20.7147 26.936 20.268 27.2013 19.8707C27.3173 19.6973 27.456 19.5347 27.7333 19.2107C28.428 18.3947 28.776 17.9867 28.98 17.56C29.4507 16.5733 29.4507 15.4267 28.98 14.44C28.776 14.0133 28.428 13.6053 27.7333 12.7893C27.5436 12.5796 27.366 12.3593 27.2013 12.1293C26.9349 11.7318 26.75 11.2854 26.6573 10.816C26.6115 10.537 26.5812 10.2557 26.5667 9.97332C26.4813 8.90532 26.4387 8.37066 26.2813 7.92532C26.1015 7.41612 25.81 6.95363 25.4282 6.57179C25.0464 6.18995 24.5839 5.89844 24.0747 5.71866C23.6293 5.56132 23.0947 5.51866 22.0267 5.43332C21.7443 5.41878 21.463 5.38851 21.184 5.34266C20.7145 5.24997 20.2681 5.06507 19.8707 4.79866C19.641 4.63368 19.4206 4.45607 19.2107 4.26666C18.3947 3.57199 17.9867 3.22399 17.56 3.01999C17.0729 2.78717 16.5399 2.66632 16 2.66632C15.4601 2.66632 14.9271 2.78717 14.44 3.01999C14.0133 3.22399 13.6053 3.57199 12.7893 4.26666Z"
+                        fill="#234632" />
+                    <path
+                        d="M21.832 13.1507C22.0298 12.946 22.1392 12.6718 22.1368 12.3872C22.1343 12.1026 22.0202 11.8303 21.8189 11.6291C21.6177 11.4278 21.3454 11.3137 21.0608 11.3112C20.7762 11.3088 20.502 11.4182 20.2973 11.616L13.8307 18.0827L11.704 15.956C11.4993 15.7582 11.2251 15.6488 10.9405 15.6512C10.6559 15.6537 10.3836 15.7678 10.1824 15.9691C9.98113 16.1703 9.86699 16.4426 9.86454 16.7272C9.8621 17.0118 9.97155 17.286 10.1693 17.4907L13.0627 20.384C13.2661 20.5871 13.5419 20.7011 13.8293 20.7011C14.1168 20.7011 14.3925 20.5871 14.596 20.384L21.832 13.1507Z"
+                        fill="#234632" />
+                </svg>
+                <h4 class="mb-0 fw-semibold c-primary">Form Verifikasi Transaksi</h4>
+            </div>
+            <form>
+                <div class="mb-3">
+                    <label for="excelFile" class="form-label">Upload File Excel</label>
+                    <input type="file" class="form-control" id="excelFile" name="excelFile" accept=".xlsx, .xls"
+                        required>
+                </div>
+                <div class="mb-3">
+                    <label for="tanggal" class="form-label">Pilih Tanggal Transaksi</label>
+                    <input type="date" class="form-control" id="tanggal" name="tanggal" required>
+                </div>
+                <button type="button" class="c-btn mt-4" id="verifikasiButton">
+                    Verifikasi Data
+                </button>
+            </form>
+
+        </div>
+        <span>© 2024 - PT Sawarga Digital Indonesia</span>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="dataModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+        aria-labelledby="dataModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable  modal-lg">
+            <div class="modal-content rounded-4">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="dataModalLabel">Hasil Verifikasi Data</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body p-4">
+                    <h6 class="fw-medium">Menampilkan hasil data yang berbeda</h6>
+                    <table id="example" class="display nowrap" style="width:100%">
+                        <thead>
+                            <tr>
+                                <th>No</th>
+                                <th>Tahun Pajak</th>
+                                <th>NOP</th>
+                                <th>Nominal</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1</td>
+                                <td>2024</td>
+                                <td>1234567890123456</td>
+                                <td>1,000,000</td>
+                            </tr>
+                            <tr>
+                                <td>2</td>
+                                <td>2023</td>
+                                <td>1234567890123456</td>
+                                <td>2,000,000</td>
+                            </tr>
+                            <tr>
+                                <td>3</td>
+                                <td>2022</td>
+                                <td>1234567890123456</td>
+                                <td>1,500,000</td>
+                            </tr>
+                            <tr>
+                                <td>4</td>
+                                <td>2021</td>
+                                <td>1234567890123456</td>
+                                <td>1,200,000</td>
+                            </tr>
+                            <tr>
+                                <td>5</td>
+                                <td>2020</td>
+                                <td>1234567890123456</td>
+                                <td>1,800,000</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+        integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous">
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js"
+        integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous">
+    </script>
+
+    <!-- Lottie -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.7.8/lottie.min.js"></script>
+
+    <!-- DataTables -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('#example').DataTable({
+                dom: 'Bfrtip',
+
+                "createdRow": function (row, data, dataIndex) {
+                    if (dataIndex % 2 === 0) {
+                        $(row).css('background-color', '#E9EDEB'); // Baris ganjil
+                    } else {
+                        $(row).css('background-color', '#ffffff'); // Baris genap
+                    }
+                    $(row).children('td').css('color', '#333333'); // Warna teks dalam baris
+                }
+            });
+
+            // Lottie animation
+            lottie.loadAnimation({
+                container: document.getElementById('loadingAnimation'),
+                renderer: 'svg',
+                loop: true,
+                autoplay: true,
+                path: 'assets/loading.json'
+            });
+        });
+
+        // JavaScript for showing loading spinner and modal
+        document.getElementById('verifikasiButton').addEventListener('click', function () {
+            var loadingContainer = document.getElementById('loadingContainer');
+            loadingContainer.style.display = 'flex'; // Show loading spinner
+            setTimeout(function () {
+                loadingContainer.style.display = 'none'; // Hide loading spinner
+                var dataModal = new bootstrap.Modal(document.getElementById('dataModal'));
+                dataModal.show(); // Show the modal
+            }, 2000); // 2 seconds delay
+        });
+    </script>
+</body>
+
+</html>
