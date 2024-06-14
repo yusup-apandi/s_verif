@@ -5,7 +5,7 @@
         .header {
             background-color: #E9EDEB;
             color: #234632;
-            padding: 18px 0;
+            padding: 24px 0;
             position: fixed;
             top: 0px;
             width: 100%;
@@ -93,4 +93,16 @@
         #loadingAnimation {
             width: 200px;
             height: 200px;
+        }
+        /* Password */
+            .password-wrapper {
+            position: relative;
+        }
+
+        #togglePassword {
+            position: absolute;
+            top: 73%;
+            right: 10px;
+            transform: translateY(-50%);
+            cursor: pointer;
         }
